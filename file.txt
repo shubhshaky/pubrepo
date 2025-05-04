@@ -1,2 +1,27 @@
-helooo brother git from jenkins
-new changes
+pipeline {
+    agent any
+    parameters {
+        string(name: 'person', defaultValue: 'shub')
+    }
+
+    stages {
+        stage('command') {
+            environment {
+                name = 'shub'
+            }
+            steps {
+                sh 'echo ${name}'
+            }
+        }
+        stage('parameters') {
+            steps {
+                sh 'echo ${person}'
+            }
+        }
+        stage('testing') {
+            steps {
+                sh 'echo ${name}'
+            }
+        }
+    }
+}
